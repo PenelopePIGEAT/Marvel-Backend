@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const fileUpload = require("express-fileupload");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
@@ -17,11 +18,11 @@ app.get("/", (req, res) => {
   res.json({ message: "All systems are online, Sir — Jarvis" });
 });
 
-app.use(authRoutes);
-app.use(marvelRoutes);
-app.use(favoriteRoutes);
+app.use("/auth", authRoutes);
+app.use("/marvel", marvelRoutes);
+app.use("/favorite", favoriteRoutes);
 
-app.all("*", (req, res) =>
+app.all("/.*/", (req, res) =>
   res.status(404).json({
     error: "Dormammu, I've come to bargain... - Dr Strange",
   })
