@@ -3,7 +3,7 @@ const router = express.Router();
 const isAuthenticated = require("../middlewares/isAuthenticated");
 const Favorite = require("../models/Favorite");
 
-router.post("/favorite", isAuthenticated, async (req, res) => {
+router.post("/", isAuthenticated, async (req, res) => {
   try {
     const { marvelId, type, name, thumbnail } = req.body;
 
