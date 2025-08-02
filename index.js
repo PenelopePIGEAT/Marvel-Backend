@@ -9,14 +9,14 @@ const signupRoute = require("./routes/signup");
 const favoriteRoute = require("./routes/favorite");
 const charactersRoute = require("./routes/characters");
 const comicsRoute = require("./routes/comics");
-const comicsByIdRoute = require("./routes/comicsById");
+const comicDetailsRoutes = require("./routes/comicdetails");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(fileUpload());
 
-mongoose.connect("mongodb://localhost:27017/marvel");
+mongoose.connect("mongodb://localhost:27017/Marvel");
 
 app.get("/", (req, res) => {
   res.json({ message: "All systems are online, Sir — Jarvis" });
@@ -27,7 +27,7 @@ app.use("/signup", signupRoute);
 app.use("/favorite", favoriteRoute);
 app.use("/characters", charactersRoute);
 app.use("/comics", comicsRoute);
-app.use("/comics", comicsByIdRoute);
+app.use("/comicdetails", comicDetailsRoutes);
 
 app.all("/.*/", (req, res) =>
   res.status(404).json({

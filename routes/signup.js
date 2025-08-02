@@ -8,6 +8,7 @@ const User = require("../models/User");
 
 router.post("/", async (req, res) => {
   try {
+    console.log("reçu login:", req.body);
     const { username, email, password } = req.body;
 
     if (!email || !username || !password) {
@@ -43,7 +44,10 @@ router.post("/", async (req, res) => {
       },
     });
   } catch (error) {
-    res.status(500).json({ message: "I am... inevitable. — Thanos" });
+    console.log(error);
+    res
+      .status(500)
+      .json({ error: error.message, message: "I am... inevitable. — Thanos" });
   }
 });
 

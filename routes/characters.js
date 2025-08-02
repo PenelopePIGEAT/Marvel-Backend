@@ -42,4 +42,22 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:characterId", async (req, res) => {
+  try {
+    const { characterId } = req.params;
+
+    const response = await axios.get(
+      `https://lereacteur-marvel-api.herokuapp.com/character/${characterId}?apiKey=${process.env.MARVEL_API_KEY}`
+    );
+
+    res.json(response.data);
+  } catch (error) {
+    console.error(
+      "Erreur route /characterdetails/:characterId :",
+      error.message
+    );
+    res.status(500).json({ error: "Erreur serveur - détail du personnage" });
+  }
+});
+
 module.exports = router;
