@@ -5,7 +5,8 @@ const Favorite = require("../models/Favorite");
 
 router.get("/", isAuthenticated, async (req, res) => {
   try {
-    const favorites = await Favorite.find({ userId: req.user._id });
+    const userId = req.user._id;
+    const favorites = await Favorite.find({ userId });
     res.status(200).json(favorites);
   } catch (error) {
     res
@@ -25,6 +26,7 @@ router.post("/", isAuthenticated, async (req, res) => {
       type,
       name,
       thumbnail,
+      description: description || "",
     });
 
     await favorite.save();

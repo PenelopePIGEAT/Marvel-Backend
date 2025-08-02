@@ -6,6 +6,7 @@ const Favorite = mongoose.model("Favorite", {
   type: { type: String, required: true },
   name: { type: String, required: true },
   thumbnail: String,
+  description: { String, default: "" },
 });
 
 module.exports = Favorite;
