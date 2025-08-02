@@ -17,6 +17,7 @@ router.get("/", isAuthenticated, async (req, res) => {
 router.post("/", isAuthenticated, async (req, res) => {
   try {
     const { marvelId, type, name, thumbnail } = req.body;
+    console.log("req.body fav:", req.body);
 
     const favorite = new Favorite({
       userId: req.user._id,
@@ -27,8 +28,9 @@ router.post("/", isAuthenticated, async (req, res) => {
     });
 
     await favorite.save();
-    res.status(201).json({ message: "Favori ajouté ! — Deadpool" });
+    res.status(201).json(favorite);
   } catch (error) {
+    console.log("error mise en fav soté back:", error);
     res.status(500).json({ message: "Impossible d’ajouter. — Vision", error });
   }
 });

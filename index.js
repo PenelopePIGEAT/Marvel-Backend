@@ -12,7 +12,12 @@ const comicsRoute = require("./routes/comics");
 const comicDetailsRoutes = require("./routes/comicdetails");
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: `http://localhost:5178`,
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(fileUpload());
 

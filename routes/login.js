@@ -28,6 +28,10 @@ router.post("/", async (req, res) => {
         .json({ message: "Wrong credentials. — Nick Fury" });
     }
 
+    const token = uid2(32);
+    user.token = token;
+    await user.save();
+
     res.status(200).json({
       message: "Wakanda Forever! — T'Challa",
       user: {
