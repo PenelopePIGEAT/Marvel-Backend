@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
       count: response.data.count,
       results: response.data.results,
     });
-    console.log("API KEY:", process.env.MARVEL_API_KEY);
+    /*console.log("API KEY:", process.env.MARVEL_API_KEY);*/
   } catch (error) {
     console.error("Dormammu, I've come to bargain... - Dr Strange");
 
