@@ -27,7 +27,7 @@ app.use("/signup", signupRoute);
 app.use("/favorite", favoriteRoute);
 app.use("/characters", charactersRoute);
 app.use("/comics", comicsRoute);
-app.use("/comicdetails", comicDetailsRoutes);
+app.use("/comic", comicDetailsRoutes);
 
 app.all("/.*/", (req, res) =>
   res.status(404).json({
