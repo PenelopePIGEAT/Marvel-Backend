@@ -17,7 +17,7 @@ router.get("/", isAuthenticated, async (req, res) => {
 
 router.post("/", isAuthenticated, async (req, res) => {
   try {
-    const { marvelId, type, name, thumbnail } = req.body;
+    const { marvelId, type, name, thumbnail, description } = req.body;
     console.log("req.body fav:", req.body);
 
     const favorite = new Favorite({
@@ -26,7 +26,7 @@ router.post("/", isAuthenticated, async (req, res) => {
       type,
       name,
       thumbnail,
-      description: description || "",
+      description,
     });
 
     await favorite.save();

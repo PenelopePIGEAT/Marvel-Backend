@@ -14,7 +14,7 @@ const comicDetailsRoutes = require("./routes/comicdetails");
 const app = express();
 app.use(
   cors({
-    origin: `http://localhost:5178`,
+    origin: `http://localhost:5179`,
     credentials: true,
   })
 );
