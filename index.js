@@ -4,17 +4,18 @@ const fileUpload = require("express-fileupload");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-const loginRoute = require("./routes/login");
-const signupRoute = require("./routes/signup");
+const loginRoute = require("./routes/auth/login");
+const signupRoute = require("./routes/auth/signup");
 const favoriteRoute = require("./routes/favorite");
 const charactersRoute = require("./routes/characters");
 const comicsRoute = require("./routes/comics");
 const comicDetailsRoutes = require("./routes/comicdetails");
+const checkAuth = require("./routes/checkAuth");
 
 const app = express();
 app.use(
   cors({
-    origin: `http://localhost:5179`,
+    origin: `http://localhost:5173`,
     credentials: true,
   })
 );
@@ -33,6 +34,7 @@ app.use("/favorite", favoriteRoute);
 app.use("/characters", charactersRoute);
 app.use("/comics", comicsRoute);
 app.use("/comic", comicDetailsRoutes);
+app.use("/check-auth", checkAuth);
 
 app.all("/.*/", (req, res) =>
   res.status(404).json({
